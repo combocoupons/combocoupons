@@ -21,15 +21,10 @@
 <svelte:head>
     <!-- SMUI Styles -->
     <link rel="stylesheet" href="{base}/smui.css" media="(prefers-color-scheme: light)" />
-    <link
-            rel="stylesheet"
-            href="{base}/smui-dark.css"
-            media="screen and (prefers-color-scheme: dark)"
-    />
 </svelte:head>
 
 <main class="coupon-list">
-    <LayoutGrid fixedColumnWidth>
+    <LayoutGrid style="width: 100%" fixedColumnWidth>
         <Cell span={12}>
             <div class="header">
                 <Textfield class="search-coupons-field" variant="outlined" label="Suchen" bind:value={filterText}>
