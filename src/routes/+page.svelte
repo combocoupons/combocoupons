@@ -5,6 +5,7 @@
     import Fab, {Icon as FabIcon, Label} from '@smui/fab';
     import Textfield from '@smui/textfield';
     import TfIcon from '@smui/textfield/icon';
+    import {base} from '$app/paths'
 
     export let data;
     const coupons: Coupon[] = data.coupons;
@@ -16,6 +17,16 @@
         return Math.floor(Math.random() * 300);
     }
 </script>
+
+<svelte:head>
+    <!-- SMUI Styles -->
+    <link rel="stylesheet" href="{base}/smui.css" media="(prefers-color-scheme: light)" />
+    <link
+            rel="stylesheet"
+            href="{base}/smui-dark.css"
+            media="screen and (prefers-color-scheme: dark)"
+    />
+</svelte:head>
 
 <main class="coupon-list">
     <LayoutGrid fixedColumnWidth>
@@ -36,7 +47,7 @@
                 </Fab>
             </div>
         </Cell>
-        {#each filteredCoupons as coupon}
+        {#each filteredCoupons as coupon (coupon.code)}
             <Cell span={4}>
                 <CouponCard bind:coupon worksCount={getRandomInt()} doesNotWorkCount={getRandomInt()}/>
             </Cell>
